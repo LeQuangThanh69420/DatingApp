@@ -1,0 +1,63 @@
+.hinhnen > video
+{
+background-size: 100%;
+position: fixed;
+z-index: -5;
+width: 100%;
+min-width: 1900px;
+}
+
+.loading-center::after {
+    content: '';
+    width: 388px;
+    height: 446px;
+    background: url(https://game.gtimg.cn/images/kq/web20221202/loading-out.png) no-repeat 0 0/100% 100%;
+    position: absolute;
+    top: 0;
+    left: 289px;
+    z-index: 1;
+    animation: clockwise 4.8s linear infinite;
+  }
+  
+  .loading-center::before {
+    content: '';
+    width: 371px;
+    height: 371px;
+    background: url(https://game.gtimg.cn/images/kq/web20221202/loading-in.png) no-repeat 0 0/100% 100%;
+    position: absolute;
+    top: 37px;
+    left: 297px;
+    z-index: 1;
+    animation: anticlockwise 3.2s linear infinite;
+  }
+  
+  .loading-center {
+    width: 972px;
+    height: 478px;
+    background: url(https://game.gtimg.cn/images/kq/web20221202/loading-center.png) no-repeat 0 0/100% 100%;
+    transform: scale(var(--scale));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -486px;
+    margin-top: -239px;
+    z-index: 10;
+  }
+  
+  @keyframes clockwise {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes anticlockwise {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
