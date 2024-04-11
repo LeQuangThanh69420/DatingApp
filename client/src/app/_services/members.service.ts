@@ -13,28 +13,30 @@ import { UserParams } from '../_models/userParams';
 export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
-  //memberCache = new Map();
+  memberCache = new Map();
 
   constructor(private http: HttpClient) { }
 
   getMembers(userParams: UserParams) {
-    // var response = this.memberCache.get(Object.values(userParams).join("-"));
-    // if(response) {
-    //   return of(response);
-    // }
-
+    var response = this.memberCache.get(Object.values(userParams).join("-"));
+    if(response) {
+      return of(response);
+    }
     let params = this.getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
     params = params.append("minAge", userParams.minAge.toString());
     params = params.append("maxAge", userParams.maxAge.toString());
     params = params.append("gender", userParams.gender);
     params = params.append("orderBy", userParams.orderBy);
-
     return this.getPaginatedResult<Member[]>(this.baseUrl + "users", params)
-      // .pipe(map(response => {
-      //   this.memberCache.set(Object.values(userParams).join("-"), response);
-      //   return response;
-      // }))
+      .pipe(map(response => {
+        this.memberCache.set(Object.values(userParams).join("-"), response);
+        return response;
+      }))
   }
+
+  // clearMemberCache() {
+  //   this.memberCache.clear();
+  // }
 
   private getPaginatedResult<T>(url: string, params: HttpParams) {
     const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
