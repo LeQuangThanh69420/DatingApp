@@ -34,7 +34,7 @@ namespace API.Data
             }
             if(predicate == "likedBy") {
                 likes = likes.Where(like => like.LikedUserId == userId);
-                users = likes.Select(like => like.LikedUser);
+                users = likes.Select(like => like.SourceUser);
             }
 
             return await users.Select(user => new LikeDTO
