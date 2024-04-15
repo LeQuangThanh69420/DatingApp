@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230412040731_ExtendedUserEntity")]
-    partial class ExtendedUserEntity
+    [Migration("20240414105806_DB")]
+    partial class DB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,52 +28,49 @@ namespace API.Data.Migrations
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("DATETIME2(7)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("DATETIME2(7)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Interests")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Introduction")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("KnownAs")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("LastActive")
-                        .HasColumnType("DATETIME2(7)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LookingFor")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("PassWordHash")
                         .IsRequired()
-                        .HasColumnType("VARBINARY(MAX)");
+                        .HasColumnType("BLOB");
 
                     b.Property<byte[]>("PassWordSalt")
                         .IsRequired()
-                        .HasColumnType("VARBINARY(MAX)");
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -90,21 +87,35 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsMain")
-                        .HasColumnType("BIT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("PublicId")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR(100)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("API.Entities.UserLike", b =>
+                {
+                    b.Property<int>("SourceUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("LikedUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("SourceUserId", "LikedUserId");
+
+                    b.HasIndex("LikedUserId");
+
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
@@ -118,8 +129,31 @@ namespace API.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.UserLike", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "LikedUser")
+                        .WithMany("LikedByUsers")
+                        .HasForeignKey("LikedUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", "SourceUser")
+                        .WithMany("LikedUsers")
+                        .HasForeignKey("SourceUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("LikedUser");
+
+                    b.Navigation("SourceUser");
+                });
+
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
+                    b.Navigation("LikedByUsers");
+
+                    b.Navigation("LikedUsers");
+
                     b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
