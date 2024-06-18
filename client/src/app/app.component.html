@@ -1,5 +1,5 @@
-<ngx-spinner type="type">
-  <div class="loading-center"></div>
+<ngx-spinner type="pacman">
+  <h3 style="color: white;">Loading...</h3>
 </ngx-spinner>
 
 <app-nav></app-nav>
@@ -15,11 +15,7 @@
 
 <div class="hinhnen d-flex justify-content-center">
   <video playsinline autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
-    <source
-      src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/915b1b4a05133186525a956d7ca5c142a3c3c9f3.webm"
-      type="video/webm">
-    <source
-      src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/f5e956f69e888392812e8ddcf4a5ef10dc03bad7.mp4"
-      type="video/mp4">
+    <source src="{{videoURL[0]}}" type="video/webm">
+    <source src="{{videoURL[1]}}" type="video/mp4">
   </video>
 </div>

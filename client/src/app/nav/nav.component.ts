@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  title = "Top1segay vi en";
+  title = "Dating App";
   model: any = {}
 
   constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {}
