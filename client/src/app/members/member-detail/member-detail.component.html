@@ -1,4 +1,4 @@
-<div class="row mb-4 mt-4" *ngIf="member">
+<div class="row mb-4 mt-4">
     <div class="col-4">
         <div class="card">
             <img src="{{member.photoUrl || '../assets/user.png'}}" alt="{{member.knownAs}}"
@@ -24,14 +24,14 @@
             <div class="card-footer">
                 <div class="btn-group d-flex">
                     <button class="btn btn-primary">Like</button>
-                    <button class="btn btn-success">Message</button>
+                    <button class="btn btn-success" (click)="selectTab(3)">Message</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-8">
-        <tabset class="member-tabset">
+        <tabset class="member-tabset" #memberTabs>
             <tab (selectTab)="onTabActivated($event)" heading="About {{member.knownAs}}">
                 <h4>Description</h4>
                 <p>{{member.introduction}}</p>
