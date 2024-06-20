@@ -3,7 +3,7 @@
   position: fixed;
   z-index: -5;
   width: 100%;
-  min-width: 1900px;
+  min-width: 2000px;
 }
 
 .loading-center::after {
