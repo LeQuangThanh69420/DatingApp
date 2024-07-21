@@ -10,6 +10,7 @@ using API.Middleware;
 using API.Services;
 using API.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,7 @@ using Microsoft.OpenApi.Models;
 
 namespace API
 {
+    [Authorize]
     public class Startup
     {
         private readonly IConfiguration _config;
