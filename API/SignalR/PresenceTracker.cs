@@ -42,7 +42,7 @@ namespace API.SignalR
             string[] onlineUsers;
             lock(OnlineUsers) 
             {
-                onlineUsers = OnlineUsers.OrderBy(k => k.Key).SelectMany(k => k.Value).ToArray();
+                onlineUsers = OnlineUsers.OrderBy(k => k.Key).Select(k => k.Key).ToArray();
             }
             return Task.FromResult(onlineUsers);
         }
