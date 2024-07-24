@@ -25,7 +25,7 @@ namespace API.SignalR
 
         public Task UserDisconnected(string username, string connectionId)
         {
-            lock(OnlineUsers)   
+            lock(OnlineUsers) 
             {
                 if(!OnlineUsers.ContainsKey(username)) return Task.CompletedTask;
                 
