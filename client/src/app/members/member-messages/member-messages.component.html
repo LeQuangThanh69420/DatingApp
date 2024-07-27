@@ -12,9 +12,9 @@
                     <div class="chat-body">
                         <div class="header">
                             <small class="text-muted">
-                                <span class="fa fa-clock-o">{{message.messageSent | date:'MMM dd, yyyy, HH:mm:ss'}}</span>
-                                <span class="text-danger" *ngIf="!message.dateRead && message.senderUsername !== username">(unread)</span>
-                                <span class="text-success" *ngIf="message.dateRead && message.senderUsername !== username">(read {{message.dateRead | date:'MMM dd, yyyy, HH:mm:ss'}})</span>
+                                <span class="fa fa-clock-o"> {{timeService.timeAgo(message.messageSent)}}</span><!-- {{message.messageSent | date:'MMM dd, yyyy, HH:mm:ss'}} -->
+                                <span class="text-danger" *ngIf="!message.dateRead && message.senderUsername !== username"> (unread)</span>
+                                <span class="text-success" *ngIf="message.dateRead && message.senderUsername !== username"> (read {{timeService.timeAgo(message.dateRead)}})</span><!-- {{message.dateRead | date:'MMM dd, yyyy, HH:mm:ss'}} -->
                             </small>
                         </div>
                         <p>{{message.content}}</p>

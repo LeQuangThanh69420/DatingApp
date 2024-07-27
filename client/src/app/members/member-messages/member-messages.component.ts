@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
+import { TimeService } from 'src/app/_services/time.service';
 
 @Component({
   selector: 'app-member-messages',
@@ -13,7 +14,7 @@ export class MemberMessagesComponent implements OnInit {
   @Input() username: string;
   messageContent: string;
 
-  constructor(public messageService: MessageService) {}
+  constructor(public messageService: MessageService, public timeService: TimeService) {}
 
   ngOnInit() {
   }
