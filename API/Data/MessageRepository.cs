@@ -117,7 +117,6 @@ namespace API.Data
                 foreach (var message in unreadMessages) {
                     message.DateRead = DateTime.UtcNow;
                 }
-                await _context.SaveChangesAsync();
             }
 
             return _mapper.Map<IEnumerable<MessageDTO>>(messages);
