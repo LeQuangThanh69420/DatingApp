@@ -1,5 +1,5 @@
 <div class="text-center mt-3">
-    <h2>Your match - {{pagination.totalItems}} found</h2>
+    <h2>Your match - {{pagination!.totalItems}} found</h2>
 </div>
 <div class="justify-content-center d-flex container mt-3">
         <form #form="ngForm" class="d-flex mb-3" (ngSubmit)="loadMembers()" autocomplete="off">
