@@ -43,6 +43,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    const dob = this.getDateOnly(this.registerForm.get('dateOfBirth')?.value);
+    this.registerForm.patchValue({dateOfBirth: dob});
     this.accountService.register(this.registerForm.value).subscribe(response => {
       this.router.navigateByUrl("/members");
     }, error => {
@@ -54,5 +56,10 @@ export class RegisterComponent implements OnInit {
   cancel() {
     this.cancelRegister.emit(false);
   }
+
+  private getDateOnly(dob: string | undefined) {
+    if (!dob) return;
+    return new Date(dob).toISOString().slice(0, 10);
+  } 
 
 }
