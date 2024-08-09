@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:5114/api/",
-  hubUrl: "http://localhost:5114/hubs/",
+  apiUrl: "https://cors-anywhere.herokuapp.com/https://dating-app-course.azurewebsites.net/api/",
+  hubUrl: "https://cors-anywhere.herokuapp.com/https://dating-app-course.azurewebsites.net/hubs/",
 };
 
 /*

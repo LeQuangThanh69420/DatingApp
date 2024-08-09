@@ -11,7 +11,7 @@ import { PresenceService } from './_services/presence.service';
 })
 export class AppComponent implements OnInit {
 
-  title = "Dating App";
+  title = "Dating Saygex";
   videoURL = [
     "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/915b1b4a05133186525a956d7ca5c142a3c3c9f3.webm", 
     "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/f5e956f69e888392812e8ddcf4a5ef10dc03bad7.mp4"
