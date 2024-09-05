@@ -13,8 +13,10 @@ export class AppComponent implements OnInit {
 
   title = "Dating Saygex";
   videoURL = [
-    "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/915b1b4a05133186525a956d7ca5c142a3c3c9f3.webm", 
-    "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/f5e956f69e888392812e8ddcf4a5ef10dc03bad7.mp4"
+    //"https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/915b1b4a05133186525a956d7ca5c142a3c3c9f3.webm", 
+    //"https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1406990/f5e956f69e888392812e8ddcf4a5ef10dc03bad7.mp4"
+    // thay đổi background
+    "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1406990/ad94df4fcc8a92d50bef360c6ca0516a31a51299.mp4", ""
   ];
   
   users: any;
